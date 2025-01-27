@@ -1,4 +1,7 @@
 # chronicles.js
+> Chronicles of Aethelgard 
+
+# NoGPU!
 
 ## Test the Ollama service
 
