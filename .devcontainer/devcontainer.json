@@ -1,0 +1,29 @@
+{
+	"name": "🟨 Chronicles.js 🧙🏻‍♂️",
+
+	"dockerComposeFile": "compose.yml",
+	"service": "chronicles-workspace",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"features": {
+		"ghcr.io/devcontainers/features/git:1": {}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+
+			]
+		}
+	},
+    "remoteEnv": {
+		"OLLAMA_BASE_URL": "http://ollama-service:11434"
+    },
+	"forwardPorts": [],
+
+   	"mounts": [
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
+		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind,consistency=cached"
+    ],
+	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder}",
+	"remoteUser": "${localEnv:USER}"
+
+}

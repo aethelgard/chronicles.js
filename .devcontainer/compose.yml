@@ -1,0 +1,23 @@
+services:
+
+  chronicles-workspace:
+    build:
+      context: .
+      platforms:
+        #- "linux/amd64"
+        - "linux/arm64"
+      dockerfile: Dockerfile.workspace
+      args:
+        - USER_NAME=${USER}
+        - NODE_MAJOR=22
+
+    volumes:
+      - ../..:/workspaces:cached      
+    command: sleep infinity
+
+  ollama-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.ollama
+    restart: always
+
