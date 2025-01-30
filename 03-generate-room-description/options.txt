@@ -1,0 +1,7 @@
+    // Add the options here
+    temperature: 0.0,
+    repeatLastN: 2,         // repeat_last_n in snake_case becomes camelCase
+    repeatPenalty: 2.2,     // repeat_penalty becomes camelCase
+    topK: 10,               // top_k becomes camelCase
+    topP: 0.5,              // top_p becomes camelCase
+    

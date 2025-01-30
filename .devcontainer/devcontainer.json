@@ -24,7 +24,7 @@
 		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached",
 		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/${localEnv:USER}/.ssh,type=bind,consistency=cached"
     ],
-	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && sudo chmod 666 /var/run/docker.sock",
+	"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && sudo chmod 666 /var/run/docker.sock",	
 	"remoteUser": "${localEnv:USER}"
 
 }

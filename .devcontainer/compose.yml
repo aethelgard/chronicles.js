@@ -1,6 +1,7 @@
 services:
 
   chronicles-workspace:
+    container_name: chronicles-js
     build:
       context: .
       platforms:
@@ -10,14 +11,19 @@ services:
       args:
         - USER_NAME=${USER}
         - NODE_MAJOR=22
+        - CTOP_VERSION=0.7.7
 
     volumes:
       - ../..:/workspaces:cached      
     command: sleep infinity
 
   ollama-service:
+    container_name: ollama
     build:
       context: .
       dockerfile: Dockerfile.ollama
-    restart: always
+    #environment:
+    #  - OLLAMA_FLASH_ATTENTION=1
+    #  - OLLAMA_KV_CACHE_TYPE=q4_0
+    #restart: always
 

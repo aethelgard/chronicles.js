@@ -1,0 +1,2 @@
+	//"postCreateCommand": "git config --global --add safe.directory ${containerWorkspaceFolder} && sudo chmod 666 /var/run/docker.sock",
+

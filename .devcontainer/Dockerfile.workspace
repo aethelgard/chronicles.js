@@ -8,6 +8,7 @@ ARG TARGETARCH
 
 ARG USER_NAME=${USER_NAME}
 ARG NODE_MAJOR=${NODE_MAJOR}
+ARG CTOP_VERSION=${CTOP_VERSION}
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -69,6 +70,14 @@ apt-get update && apt-get install nodejs -y
 EOF
 
 # ------------------------------------
+# Install Ctop
+# ------------------------------------
+RUN <<EOF
+wget https://github.com/bcicen/ctop/releases/download/v${CTOP_VERSION}/ctop-${CTOP_VERSION}-${TARGETOS}-${TARGETARCH} -O /usr/local/bin/ctop
+chmod +x /usr/local/bin/ctop
+EOF
+
+# ------------------------------------
 # Create a new user
 # ------------------------------------
 # Create new regular user `${USER_NAME}` and disable password and gecos for later
@@ -89,6 +98,7 @@ WORKDIR /home/${USER_NAME}
 # Set the user as the owner of the working directory
 RUN chown -R ${USER_NAME}:${USER_NAME} /home/${USER_NAME}
 
+# handle Docker socket permissions in a devcontainer 
 RUN <<EOF
 groupadd docker
 usermod -aG docker ${USER_NAME}
